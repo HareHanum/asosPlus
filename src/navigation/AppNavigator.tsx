@@ -3,6 +3,7 @@ import React from 'react';
 import HomeScreen from '../screens/HomeScreen';
 import { RootStackParamList } from './NavigationTypes';
 import Routes from './routes';
+import ChatsMenuScreen from '../screens/ChatsMenuScreen';
 
 const Stack = createStackNavigator<RootStackParamList>();
 
@@ -16,6 +17,10 @@ function AppNavigatorRootStack() {
             <Stack.Screen
                 name={Routes.homeScreen}
                 component={HomeScreen}
+            />
+            <Stack.Screen
+                name={Routes.chatsMenuScreen}
+                component={ChatsMenuScreen}
             />
         </Stack.Navigator>
 

@@ -1,18 +1,19 @@
-import React from 'react';
+import React, { FC, useEffect } from 'react';
 import {
     SafeAreaView,
     StyleSheet
 } from 'react-native';
 import { WebView } from 'react-native-webview';
 import { HomeScreenStrings } from '../theme/strings';
+import Routes from '../navigation/routes';
+import { HomeScreenProps } from '../navigation/NavigationTypes';
 
-const HomeScreen = () => {
+const HomeScreen: FC<HomeScreenProps> = ({ navigation }) => {
     /****************************************** ATTRIBUTES ************************************************/
 
     const ASOS_URL = 'https://asos.com';
 
     /****************************************** FUNCTIONS ************************************************/
-
 
     /****************************************** UI ************************************************/
 

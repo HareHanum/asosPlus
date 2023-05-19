@@ -2,14 +2,19 @@
 import React from 'react';
 import { StyleProp, ViewStyle } from 'react-native';
 
-import Add from './Add';
 import colors from '../../theme/colors';
+import Add from './Add';
+import Back from './Back';
 import Cross from './Cross';
+import Sos from './Sos';
+import Discussion from './Discussion';
 
 export enum IconNames {
   add = 'add',
   cross = 'cross',
   back = 'back',
+  sos = 'sos',
+  discussion = 'discussion',
   /* For empty icon */
   none = 'none',
 }
@@ -40,7 +45,13 @@ const Icon: React.FC<Props> = ({
       <Cross style={style} size={size} color={color} opacity={opacity} />
     ),
     [IconNames.back]: (
-      <Add style={style} size={size} color={color} opacity={opacity} />
+      <Back style={style} size={size} color={color} opacity={opacity} />
+    ),
+    [IconNames.sos]: (
+      <Sos style={style} size={size} color={color} opacity={opacity} />
+    ),
+    [IconNames.discussion]: (
+      <Discussion style={style} size={size} color={color} opacity={opacity} />
     ),
   }[name];
 };
