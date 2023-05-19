@@ -1,19 +1,33 @@
 import React from 'react';
 import {
     SafeAreaView,
-    StyleSheet,
-    Text
+    StyleSheet
 } from 'react-native';
+import { WebView } from 'react-native-webview';
+import { HomeScreenStrings } from '../theme/strings';
 
 const HomeScreen = () => {
+    /****************************************** ATTRIBUTES ************************************************/
+
+    const ASOS_URL = 'https://asos.com';
+
+    /****************************************** FUNCTIONS ************************************************/
+
+
+    /****************************************** UI ************************************************/
+
     return (
-        <SafeAreaView style={styles.container}>
-            <Text style={{ alignSelf: 'center', marginTop: 40 }}>Hello World</Text>
+        <SafeAreaView style={container}>
+            <WebView
+                javaScriptEnabled
+                source={{ uri: HomeScreenStrings.ASOS_URL }}
+                style={container} />
         </SafeAreaView>
     );
 };
-
-const styles = StyleSheet.create({
+const {
+    container,
+} = StyleSheet.create({
     container: {
         flex: 1,
     },

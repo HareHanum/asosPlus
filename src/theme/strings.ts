@@ -1,4 +1,4 @@
 
 export const HomeScreenStrings = {
-    titlePartOne: 'Hello there',
+    ASOS_URL: 'https://asos.com'
 };
