@@ -1,5 +1,6 @@
-import React, { FC } from 'react';
+import React, { FC, useState } from 'react';
 import {
+    ActivityIndicator,
     NativeModules,
     SafeAreaView,
     StyleSheet,
@@ -18,6 +19,8 @@ import Routes from '../navigation/routes';
 const ChatsMenuScreen: FC<ChatsMenuScreenProps> = ({ navigation }) => {
     /****************************************** ATTRIBUTES ************************************************/
 
+    const [isLoadingSupport, setLoadingSupport] = useState(false);
+
     var RNKommunicateChat = NativeModules.RNKommunicateChat;
     const conversationObject = {
         'appId': 'e3c3387ca29771fa3e7835155248250a',
@@ -27,7 +30,9 @@ const ChatsMenuScreen: FC<ChatsMenuScreenProps> = ({ navigation }) => {
     /****************************************** FUNCTIONS ************************************************/
 
     const onPressSupport = () => {
+        setLoadingSupport(true)
         RNKommunicateChat.buildConversation(conversationObject, (response: any, responseMessage: any) => {
+            setLoadingSupport(false)
             if (response == "Success") {
                 console.log("Conversation Successfully with id:" + responseMessage);
             } else {
@@ -52,7 +57,8 @@ const ChatsMenuScreen: FC<ChatsMenuScreenProps> = ({ navigation }) => {
                     flexDirection: 'row',
                     alignItems: 'center',
                 }}>
-                    <Icon style={iconStyle} color={colors.black} size={40} name='sos' />
+                    {isLoadingSupport ? <ActivityIndicator size={'large'} style={iconStyle} /> : <Icon style={iconStyle} color={colors.black} size={40} name='sos' />
+                    }
                     <Label text={ChatMenuScreenStrings.firstButtonText} size={30} />
                 </TouchableOpacity>
             </Card>
