@@ -57,7 +57,7 @@ const ChatsMenuScreen: FC<ChatsMenuScreenProps> = ({ navigation }) => {
                     flexDirection: 'row',
                     alignItems: 'center',
                 }}>
-                    {isLoadingSupport ? <ActivityIndicator size={'large'} style={iconStyle} /> : <Icon style={iconStyle} color={colors.black} size={40} name='sos' />
+                    {isLoadingSupport ? <ActivityIndicator color={colors.black} size={'large'} style={iconStyle} /> : <Icon style={iconStyle} color={colors.black} size={40} name='sos' />
                     }
                     <Label text={ChatMenuScreenStrings.firstButtonText} size={30} />
                 </TouchableOpacity>

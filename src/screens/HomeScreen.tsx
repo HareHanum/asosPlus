@@ -1,5 +1,6 @@
-import React, { FC, useEffect } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import {
+    ActivityIndicator,
     Animated,
     Platform,
     SafeAreaView,
@@ -19,6 +20,7 @@ const HomeScreen: FC<HomeScreenProps> = ({ navigation }) => {
 
     const ASOS_URL = 'https://asos.com';
     const shakeAnimation = new Animated.Value(0);
+    const [webIsLoaded, setWebIsLoaded] = useState(false)
 
     /****************************************** FUNCTIONS ************************************************/
 
@@ -40,11 +42,13 @@ const HomeScreen: FC<HomeScreenProps> = ({ navigation }) => {
 
     return (
         <SafeAreaView style={container}>
+            {!webIsLoaded && <ActivityIndicator color={colors.black} style={loader} size={'large'} />}
             <WebView
+                onLoad={() => setWebIsLoaded(true)}
                 javaScriptEnabled
                 source={{ uri: HomeScreenStrings.ASOS_URL }}
                 style={container} />
-            <Animated.View style={[supportButtonContainer, {
+            {webIsLoaded && <Animated.View style={[supportButtonContainer, {
                 transform: [
                     {
                         rotate: shakeAnimation.interpolate({
@@ -57,18 +61,19 @@ const HomeScreen: FC<HomeScreenProps> = ({ navigation }) => {
                 <TouchableOpacity onPress={onSupportPress} style={supportButton} activeOpacity={.7}>
                     <Icon size={64} name='support' />
                 </TouchableOpacity>
-            </Animated.View>
+            </Animated.View>}
+
         </SafeAreaView>
     );
 };
 const {
     container,
     supportButtonContainer,
-    supportButton
+    supportButton,
+    loader
 } = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: colors.black
     },
     supportButtonContainer: {
         zIndex: 10,
@@ -85,6 +90,13 @@ const {
         right: 0,
         height: 64,
     },
+    loader: {
+        position: 'absolute',
+        top: 0,
+        bottom: 0,
+        left: 0,
+        right: 0
+    }
 });
 
 export default HomeScreen;
