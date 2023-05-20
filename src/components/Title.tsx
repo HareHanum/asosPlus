@@ -19,10 +19,10 @@ const Title: React.FC<Props> = ({ style = {}, partOne = '', partTwo = '' }) => (
 const styles = StyleSheet.create({
     title: {
         fontSize: 40,
-        fontFamily: 'OktaNeue-Normal',
+        fontFamily: 'Futura-Medium',
     },
     bold: {
-        fontFamily: 'OktaNeue-Bold',
+        fontFamily: 'Futura-Medium',
     },
 });
 

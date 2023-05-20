@@ -46,6 +46,7 @@ const styles = StyleSheet.create({
         color: colors.orange,
         fontSize: 14,
         letterSpacing: 0.5,
+        fontFamily: 'Futura-Medium',
         fontWeight: '600',
     },
 });

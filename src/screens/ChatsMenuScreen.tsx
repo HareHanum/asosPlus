@@ -42,14 +42,16 @@ const ChatsMenuScreen: FC<ChatsMenuScreenProps> = ({ navigation }) => {
     }
 
     const onPressDiscussions = () => {
-        //TODO: implement navigation to Disccustions screen
+        navigation.navigate(Routes.discussionsScreen)
     }
 
     /****************************************** UI ************************************************/
 
     return (
         <SafeAreaView style={container}>
+            {/** First Spacer **/}
             <View style={spacer} />
+            {/** Support Card Button **/}
             <Card style={button}>
                 <TouchableOpacity onPress={onPressSupport} style={{
                     flex: 1,
@@ -62,6 +64,7 @@ const ChatsMenuScreen: FC<ChatsMenuScreenProps> = ({ navigation }) => {
                     <Label text={ChatMenuScreenStrings.firstButtonText} size={30} />
                 </TouchableOpacity>
             </Card>
+            {/** Discussions Card Button **/}
             <Card style={button}>
                 <TouchableOpacity onPress={onPressDiscussions} style={{
                     flex: 1,
@@ -73,6 +76,7 @@ const ChatsMenuScreen: FC<ChatsMenuScreenProps> = ({ navigation }) => {
                     <Label text={ChatMenuScreenStrings.secondButtonText} size={30} />
                 </TouchableOpacity>
             </Card>
+            {/** Second Spacer **/}
             <View style={spacer} />
         </SafeAreaView>
     );

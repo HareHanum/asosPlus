@@ -18,7 +18,6 @@ import Routes from '../navigation/routes';
 const HomeScreen: FC<HomeScreenProps> = ({ navigation }) => {
     /****************************************** ATTRIBUTES ************************************************/
 
-    const ASOS_URL = 'https://asos.com';
     const shakeAnimation = new Animated.Value(0);
     const [webIsLoaded, setWebIsLoaded] = useState(false)
 
@@ -43,6 +42,7 @@ const HomeScreen: FC<HomeScreenProps> = ({ navigation }) => {
     return (
         <SafeAreaView style={container}>
             {!webIsLoaded && <ActivityIndicator color={colors.black} style={loader} size={'large'} />}
+            {/** Webview **/}
             <WebView
                 onLoad={() => setWebIsLoaded(true)}
                 javaScriptEnabled
@@ -58,6 +58,7 @@ const HomeScreen: FC<HomeScreenProps> = ({ navigation }) => {
                     }
                 ]
             }]}>
+                {/** Support Button **/}
                 <TouchableOpacity onPress={onSupportPress} style={supportButton} activeOpacity={.7}>
                     <Icon size={64} name='support' />
                 </TouchableOpacity>

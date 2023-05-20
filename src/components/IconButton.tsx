@@ -67,7 +67,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     label: {
-        fontFamily: 'OktaNeue-Medium',
+        fontFamily: 'Futura-Medium',
         marginStart: 8,
     },
     disabled: {

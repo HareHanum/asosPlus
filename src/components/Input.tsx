@@ -71,6 +71,7 @@ const styles = StyleSheet.create({
     text: {
         fontSize: 14,
         color: colors.black,
+        fontFamily: 'Futura-Medium'
     },
     errorContainer: {
         borderBottomColor: colors.toastRed,

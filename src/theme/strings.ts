@@ -7,3 +7,7 @@ export const ChatMenuScreenStrings = {
     firstButtonText: 'Support',
     secondButtonText: 'Discussions'
 };
+
+export const DiscussionsScreenStrings = {
+    title: 'Discussions',
+};
