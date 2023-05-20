@@ -12,8 +12,7 @@ function AppNavigatorRootStack() {
         <Stack.Navigator
             screenOptions={{
                 headerShown: false
-            }}
-        >
+            }}>
             <Stack.Screen
                 name={Routes.homeScreen}
                 component={HomeScreen}

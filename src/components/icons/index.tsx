@@ -8,6 +8,7 @@ import Back from './Back';
 import Cross from './Cross';
 import Sos from './Sos';
 import Discussion from './Discussion';
+import Support from './Support';
 
 export enum IconNames {
   add = 'add',
@@ -15,6 +16,7 @@ export enum IconNames {
   back = 'back',
   sos = 'sos',
   discussion = 'discussion',
+  support = 'support',
   /* For empty icon */
   none = 'none',
 }
@@ -52,6 +54,9 @@ const Icon: React.FC<Props> = ({
     ),
     [IconNames.discussion]: (
       <Discussion style={style} size={size} color={color} opacity={opacity} />
+    ),
+    [IconNames.support]: (
+      <Support style={style} size={size} color={color} opacity={opacity} />
     ),
   }[name];
 };
