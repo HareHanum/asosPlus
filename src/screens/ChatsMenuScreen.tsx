@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { FC } from 'react';
 import {
+    NativeModules,
     SafeAreaView,
     StyleSheet,
     Text,
@@ -11,14 +12,28 @@ import { ChatMenuScreenStrings } from '../theme/strings';
 import Icon from '../components/icons';
 import colors from '../theme/colors';
 import { Card } from 'react-native-paper';
+import { ChatsMenuScreenProps } from '../navigation/NavigationTypes';
+import Routes from '../navigation/routes';
 
-const ChatsMenuScreen = () => {
+const ChatsMenuScreen: FC<ChatsMenuScreenProps> = ({ navigation }) => {
     /****************************************** ATTRIBUTES ************************************************/
+
+    var RNKommunicateChat = NativeModules.RNKommunicateChat;
+    const conversationObject = {
+        'appId': 'e3c3387ca29771fa3e7835155248250a',
+        isSingleConversation: false
+    }
 
     /****************************************** FUNCTIONS ************************************************/
 
     const onPressSupport = () => {
-        //TODO: implement navigation to SOS support chat
+        RNKommunicateChat.buildConversation(conversationObject, (response: any, responseMessage: any) => {
+            if (response == "Success") {
+                console.log("Conversation Successfully with id:" + responseMessage);
+            } else {
+                console.log("Kommunicate create conversation failed : " + responseMessage);
+            }
+        });
     }
 
     const onPressDiscussions = () => {
@@ -30,8 +45,8 @@ const ChatsMenuScreen = () => {
     return (
         <SafeAreaView style={container}>
             <View style={spacer} />
-            <Card onPress={onPressSupport} style={button}>
-                <View style={{
+            <Card style={button}>
+                <TouchableOpacity onPress={onPressSupport} style={{
                     flex: 1,
                     justifyContent: 'center',
                     flexDirection: 'row',
@@ -39,10 +54,10 @@ const ChatsMenuScreen = () => {
                 }}>
                     <Icon style={iconStyle} color={colors.black} size={40} name='sos' />
                     <Label text={ChatMenuScreenStrings.firstButtonText} size={30} />
-                </View>
+                </TouchableOpacity>
             </Card>
-            <Card onPress={onPressDiscussions} style={button}>
-                <View style={{
+            <Card style={button}>
+                <TouchableOpacity onPress={onPressDiscussions} style={{
                     flex: 1,
                     flexDirection: 'row',
                     justifyContent: 'center',
@@ -50,7 +65,7 @@ const ChatsMenuScreen = () => {
                 }}>
                     <Icon style={iconStyle} color={colors.black} size={40} name='discussion' />
                     <Label text={ChatMenuScreenStrings.secondButtonText} size={30} />
-                </View>
+                </TouchableOpacity>
             </Card>
             <View style={spacer} />
         </SafeAreaView>

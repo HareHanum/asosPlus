@@ -1,9 +1,9 @@
 import { createStackNavigator } from '@react-navigation/stack';
 import React from 'react';
+import ChatsMenuScreen from '../screens/ChatsMenuScreen';
 import HomeScreen from '../screens/HomeScreen';
 import { RootStackParamList } from './NavigationTypes';
 import Routes from './routes';
-import ChatsMenuScreen from '../screens/ChatsMenuScreen';
 
 const Stack = createStackNavigator<RootStackParamList>();
 
